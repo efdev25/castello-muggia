@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import InteractiveTimeline from '../islands/InteractiveTimeline';
 import Gallery from '../components/Gallery.astro';
+import BookingForm from '../islands/BookingForm';
 ---
 
 <Layout 
@@ -10,15 +11,46 @@ import Gallery from '../components/Gallery.astro';
 >
   <main>
     <section class="relative h-[90vh] min-h-[600px] flex items-center justify-center bg-[#121212] overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent"></div>
+      {/* Sfondo Immagine AI con effetto Ken Burns (zoom impercettibile e lussuoso) */}
+      <img 
+        src="/images/castle_exterior.png" 
+        alt="Castello di Muggia Esterno" 
+        class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105 animate-pulse transition-all duration-1000"
+        style="animation-duration: 8s;" 
+      />
+      {/* Overlay a gradiente per garantire perfetta leggibilità e look dark-premium */}
+      <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/60 to-transparent z-1"></div>
+      <div class="absolute inset-0 bg-radial from-transparent via-black/40 to-[#121212] z-1"></div>
+
       <div class="relative z-10 text-center text-[#FDFBF7] px-6 max-w-4xl mx-auto flex flex-col items-center">
-        <span class="text-sm md:text-base tracking-[0.2em] uppercase text-stone-300 mb-6 font-medium">Estate 2026</span>
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-8">
-          Il Castello che <br/><i class="text-[#A44B2B]">torna a vivere.</i>
+        {/* Badge in stile Glassmorphism */}
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 mb-8 animate-fade-in">
+          <span class="w-2 h-2 rounded-full bg-[#A44B2B] animate-ping"></span>
+          <span class="text-xs tracking-[0.2em] uppercase text-stone-200 font-medium">Riapertura Esclusiva • Estate 2026</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-6 drop-shadow-sm">
+          Il Castello che <br/><i class="text-[#A44B2B] font-normal">torna a vivere.</i>
         </h1>
-        <p class="text-lg md:text-xl text-stone-300 max-w-2xl font-light mb-10 leading-relaxed">
-          Oltre 650 anni di storia affacciati sul Golfo di Trieste. Un nuovo capitolo fatto di cultura ed eventi indimenticabili.
+        <p class="text-lg md:text-xl text-stone-300 max-w-2xl font-light mb-10 leading-relaxed drop-shadow">
+          Oltre 650 anni di grandezza affacciati sul Golfo di Trieste. Un rifugio senza tempo per cultura, ospitalità ed eventi indimenticabili.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+          <a href="#prenota" class="bg-[#A44B2B] hover:bg-[#8A3F24] text-white px-8 py-4 rounded-full text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-[#A44B2B]/20 hover:-translate-y-0.5">
+            Richiedi Invito
+          </a>
+          <a href="#storia" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/10 px-8 py-4 rounded-full text-sm font-medium transition-all duration-300">
+            Esplora la Storia
+          </a>
+        </div>
+      </div>
+
+      {/* Indicatore Mouse Scroll Animato */}
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity hidden md:flex">
+        <div class="w-5 h-8 border-2 border-stone-400 rounded-full p-1">
+          <div class="w-1 h-2 bg-[#A44B2B] rounded-full mx-auto animate-bounce"></div>
+        </div>
+        <span class="text-[9px] uppercase tracking-widest text-stone-400">Scorri</span>
       </div>
     </section>
 
@@ -26,6 +58,23 @@ import Gallery from '../components/Gallery.astro';
       <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-4xl font-serif mb-16 text-center">Sei secoli in cinque capitoli.</h2>
         <InteractiveTimeline client:visible />
+      </div>
+    </section>
+
+    <section id="prenota" class="py-24 md:py-32 bg-[#FDFBF7] relative">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-[#A44B2B] text-sm uppercase tracking-widest font-semibold">Accesso Esclusivo</span>
+          <h2 class="text-4xl md:text-5xl font-serif text-[#121212] leading-tight">
+            Sii tra i primi a varcare il cancello.
+          </h2>
+          <p class="text-stone-600 font-light leading-relaxed">
+            Le visite per l'Estate 2026 saranno a numero chiuso per garantire un'esperienza intima e rispettosa. Compila il modulo per ricevere l'invito ufficiale.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <BookingForm client:visible />
+        </div>
       </div>
     </section>
 

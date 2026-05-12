@@ -12,7 +12,7 @@ export default function InteractiveTimeline() {
 
   return (
     <div className="relative">
-      <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8">
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {storici.map((item, idx) => {
           const isActive = activeIndex === idx;
           return (

@@ -6,3 +6,8 @@ compatibility_flags = ["nodejs_compat"]
 # Serve gli asset statici generati da Astro
 [assets]
 directory = "dist"
+
+# Abilita i log delle chiamate per il debugging nella Dashboard Cloudflare
+[observability.logs]
+enabled = true
+invocation_logs = true
