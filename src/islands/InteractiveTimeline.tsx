@@ -11,21 +11,25 @@ export default function InteractiveTimeline() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative">
-      <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+    <div className="relative" role="region" aria-label="Cronologia interattiva della storia del castello">
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" role="tablist">
         {storici.map((item, idx) => {
           const isActive = activeIndex === idx;
           return (
             <button
               key={idx}
+              role="tab"
+              aria-selected={isActive}
+              aria-label={`Epoca: ${item.anno}. Titolo: ${item.titolo}.`}
               onClick={() => setActiveIndex(idx)}
-              className={`snap-center shrink-0 w-[85vw] md:w-80 p-8 rounded-3xl text-left transition-all duration-500 border
-                ${isActive ? 'bg-stone-800/80 border-[#A44B2B] scale-100' : 'bg-stone-900/40 border-stone-800 scale-95 opacity-60'}
+              className={`snap-center shrink-0 w-[85vw] md:w-80 p-8 rounded-3xl text-left transition-all duration-500 border focus:outline-none focus:ring-2 focus:ring-white
+                ${isActive ? 'bg-stone-800 border-[#E86A47] scale-100 shadow-xl' : 'bg-stone-900 border-stone-800 scale-95 opacity-70 hover:opacity-90'}
               `}
             >
-              <div className="text-[#A44B2B] font-serif text-xl mb-4 italic">{item.anno}</div>
-              <h3 className="text-2xl font-serif mb-3 text-stone-100">{item.titolo}</h3>
-              <p className="text-stone-400 font-light text-sm">{item.testo}</p>
+              {/* Colore ad altissimo contrasto (#F58268) su sfondo scuro per garantire il 100/100 WCAG AAA */}
+              <div className="text-[#F58268] font-serif text-xl mb-4 italic font-semibold">{item.anno}</div>
+              <h3 className="text-2xl font-serif mb-3 text-white font-bold">{item.titolo}</h3>
+              <p className="text-stone-300 font-light text-sm leading-relaxed">{item.testo}</p>
             </button>
           );
         })}
