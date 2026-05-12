@@ -18,8 +18,8 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <SEO title={title} description={description} />
-    {/* Ottimizzazione PageSpeed estrema: Preload dell'asset LCP (Largest Contentful Paint) su Mobile */}
-    <link rel="preload" fetchpriority="high" as="image" href="/images/castle_exterior.png" type="image/png" />
+    {/* Ottimizzazione PageSpeed estrema: Preload dell'asset LCP (Largest Contentful Paint) su Mobile/Desktop */}
+    <link rel="preload" fetchpriority="high" as="image" href="/images/castle_exterior.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {/* Ottimizzazione PageSpeed: Caricamento differito del CSS di Google Fonts per azzerare il Render Blocking */}
