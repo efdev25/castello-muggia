@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Specifica la sitemap per l'indicizzazione avanzata su Google
+Sitemap: https://castello-muggia-worker.efdev25.workers.dev/sitemap.xml
