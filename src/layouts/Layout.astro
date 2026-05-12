@@ -22,7 +22,11 @@ const { title, description } = Astro.props;
     <link rel="preload" fetchpriority="high" as="image" href="/images/castle_exterior.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    {/* Ottimizzazione PageSpeed: Caricamento differito del CSS di Google Fonts per azzerare il Render Blocking */}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    </noscript>
   </head>
   <body class="bg-[#FDFBF7] text-[#121212] font-sans antialiased selection:bg-[#A44B2B] selection:text-white">
     <header class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/60 backdrop-blur-md border-b border-stone-200/50">
