@@ -1,0 +1,50 @@
+---
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#FDFBF7] text-[#121212] font-sans antialiased selection:bg-[#A44B2B] selection:text-white">
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/60 backdrop-blur-md border-b border-stone-200/50">
+      <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between" aria-label="Navigazione Principale">
+        <a href="/" class="flex flex-col group">
+          <span class="font-serif text-xl tracking-wide group-hover:text-[#A44B2B] transition-colors">Castello di Muggia</span>
+          <span class="text-[10px] tracking-widest uppercase text-stone-500 font-medium">Dal 1374</span>
+        </a>
+        <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-700">
+          <li><a href="#storia" class="hover:text-[#A44B2B] transition-colors">Storia</a></li>
+          <li><a href="#esperienze" class="hover:text-[#A44B2B] transition-colors">Esperienze</a></li>
+          <li><a href="#galleria" class="hover:text-[#A44B2B] transition-colors">Galleria</a></li>
+        </ul>
+        <a href="#prenota" class="bg-[#A44B2B] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#8A3F24] hover:shadow-lg transition-all duration-300">
+          Prenota
+        </a>
+      </nav>
+    </header>
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+</style>

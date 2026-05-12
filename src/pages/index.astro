@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InteractiveTimeline from '../islands/InteractiveTimeline';
+import Gallery from '../components/Gallery.astro';
+---
+
+<Layout 
+  title="Castello di Muggia | Oltre 650 anni di storia" 
+  description="Il Castello di Muggia torna a vivere. Riapertura Estate 2026."
+>
+  <main>
+    <section class="relative h-[90vh] min-h-[600px] flex items-center justify-center bg-[#121212] overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent"></div>
+      <div class="relative z-10 text-center text-[#FDFBF7] px-6 max-w-4xl mx-auto flex flex-col items-center">
+        <span class="text-sm md:text-base tracking-[0.2em] uppercase text-stone-300 mb-6 font-medium">Estate 2026</span>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-8">
+          Il Castello che <br/><i class="text-[#A44B2B]">torna a vivere.</i>
+        </h1>
+        <p class="text-lg md:text-xl text-stone-300 max-w-2xl font-light mb-10 leading-relaxed">
+          Oltre 650 anni di storia affacciati sul Golfo di Trieste. Un nuovo capitolo fatto di cultura ed eventi indimenticabili.
+        </p>
+      </div>
+    </section>
+
+    <section id="storia" class="py-24 bg-[#121212] text-[#FDFBF7]">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-serif mb-16 text-center">Sei secoli in cinque capitoli.</h2>
+        <InteractiveTimeline client:visible />
+      </div>
+    </section>
+
+    <Gallery />
+  </main>
+</Layout>
